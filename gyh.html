@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSS-only border animation</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <script>var btn = document.querySelector('.knopka');
+
+  window.onscroll = magic;
+
+  function magic() {
+      if (window.pageYOffset > 20) {
+      btn.style.opacity = '1';
+    } else { btn.style.opacity = '0'; }
+}	
+btn.onclick = function () {
+	window.scrollTo(0,0);
+};</script>
+      
+
+  
+</head>
+
+<body>
+
+  
+<div class="container"><a class="border-animation" href="#">
+    <div class="border-animation__inner">Border animation</div></a></div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+  
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Login to "Lophophore"</title>
+     <link rel = "stylesheet" href="styles.css"/>
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+ </head>
+ <body>
+          <h2 align="center" font-size="20px;">Lophophore</h2>
+     <div class=head>
+       <hr class="head">
+         <div class="cash">
+             <button class="button" style="vertical-align:middle"><span>cashback </span></button>
+         </div>
+     </div>
+        
+     
+     
+  <form action="/adder" method="POST" align="center">
+    <p text-align="center"></p>
+   
+   <table align="center" cellpadding="0">
+        <tr> 
+            <th>
+                 <div class="LoginName">Login</div>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                 <div class ="login">
+                 <textarea rows="1" cols=60 name="login"></textarea>
+                 </div>
+            </td>
+        </tr>
+            <tr>
+            <th>
+              Password
+            </th>
+            </tr>
+        <tr>
+            <td>
+                <div class ="password">
+                   
+                <textarea rows="1" cols="60" name="password"></textarea>
+                
+                </div>
+            </td>
+     </table>
+    <button class ="butn" onclick="location.href = '/hand'">Подобрать</button>
+    <button onclick="location.href = '/add'">Добавить</button>
+     </form>
+</body>
+<html>
