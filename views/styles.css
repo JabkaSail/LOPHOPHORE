@@ -82,7 +82,7 @@ h2 {
 
 p {
     font-family: 'Ubuntu Condensed', sans-serif;
-    font-size: 15px;
+    font-size: 100%;
 }
 
 .nameName{ 
@@ -332,6 +332,16 @@ hr.tag{
   left: 50%;
 }
 
+li.second{
+    box-shadow: 10px rgba(0, 0, 0, .5);
+    color: #8fdebe;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 30px;
+    background: white;
+    
+}
+
 .knopka {
 	opacity: 0;
   background-color: #eee;
@@ -392,21 +402,51 @@ hr.tag{
 }
 
 .EntBtn {
+    border: 1px;
     margin-bottom: 100px;
-	background-color:#526CA9;
-	border-radius:1px;
 	display:inline-block;
-	cursor:pointer;
 	color:#ffffff;
-	 font-family: 'Ubuntu Condensed', sans-serif;
+     background-color: #001f43;
+    font-family: 'Ubuntu Condensed', sans-serif;
 	font-size:20px;
 	padding:9px 34px;
 	text-decoration:none;
 }
 .EntBtn:hover {
-	background-color:#007878;
+color: #ffffff;
+background-color:#2c3e50;
+transition: all 600ms;	
 }
-.EntBtn:active {
-	position:relative;
-	top:1px;
+
+.clothpadding{
+   
+   text-align: center;
+    padding-right: 10px;
+}
+
+.Buy {
+    align-content: center;
+    text-align: center;
+    border: 1px;
+    
+	display:inline-block;
+	color:#ffffff;
+     background-color: #001f43;
+    font-family: 'Ubuntu Condensed', sans-serif;
+	font-size:20px;
+	
+	text-decoration:none;
+    margin-bottom: 100%;
+    margin-left: 150%;
+    margin-right: 150%;
+}
+.Buy:hover {
+color: #ffffff;
+background-color:#2c3e50;
+transition: all 600ms;	
+  
+}
+
+.imgborder {
+   border: 3px solid #00a8e1;
 }

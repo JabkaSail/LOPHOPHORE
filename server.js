@@ -6,7 +6,8 @@ var app = express();
 var con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'ApoD_rasStRELny',
+  //password : 'ApoD_rasStRELny',
+    password : 'password',
   database : 'Lophophore'
  });
 
@@ -26,7 +27,7 @@ app.use(express.static(__dirname + "/views"));
 */
     
 app.get('/', function(req, res) {
-  res.sendfile('views/index.html');
+res.redirect('/hand');
 });      
 
 
@@ -110,19 +111,46 @@ app.post('/handler', function(req, res, next) {
             if (count == 0) {
        res.writeHead(200, {'Content-Type': 'text/html'});
           res.write(
-               '<!DOCTYPE html>'
-              +'<html>'
-        +'<head>'
-        +'<meta charset="utf-8">'
-        +'<title>'+'Мы не смогли подобрать ни одной вещи!</title>'
-        +'</head>'
-        +'<body>'
-        +  '<p text-align="center"></p>'
-    +'<h2>The main page of Lophophore service</h2>'
-    +`<button onclick="location.href = '/hand'">index</button>`
-    +  `<button onclick="location.href = '/add'">add</button>`
-        +'</body>'
-        +'</html>'
+            '<!DOCTYPE html>'
++'<html>'
+ +'<head>'
+  +'<meta charset="utf-8">'
+  +'<title> Sorry, Lophophore</title>'
+   +'<link rel = "stylesheet" href="styles.css"/>'
++'<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">'
+ +    '<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">'
+  +   '<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">'
+   +  '<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">'
+    + '<link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">'
++    '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">'
+ +   ' <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>'
+ +    '<script>$(document).ready(function(){   '
+  + ' $(window).scroll(function () {'
+    +   ' if ($(this).scrollTop() > 130) {'
+   +       '  $("#scroller").fadeIn();'
+    +    '} else {'
+    +       ' $("#scroller").fadeOut();'
+    + '   }'
++    '});'
++'});</script>'
+ +   ' <script src="http://code.jquery.com/jquery-latest.js"></script>'
+ +'</head>'
+ +'<body>'
++   '<header>'
++  '<h1 font-size="20px">Lophophore</h1>'
++         '</header>'
++       '<nav>'
++        '<ul>'
++ '<li><a href="">Новости</a></li><li style="float:center"><a href="hand.html">Подобрать</a></li><li><a href="">Тренды</a></li>'
++         '</ul>'
++          '    <hr class="head">'
++      '</nav>'
++  ' <table align="center" cellpadding="0">'
+  +'<h1>Мы не смогли подобрать ни одной вещи!</h1>'
+                 +'<li class = second><a class ="EntBtn" href="/hand">Повторить выбор</a></li>'
+              +'</table>'
++        '</body>'
++        '</html>'
           )
    //     res.end(JSON.stringify(fields));
         res.end();  
@@ -138,7 +166,7 @@ app.post('/handler', function(req, res, next) {
    //       console.log("Hello^_^");
      // }
      // else{
-          var stroka="";
+          var stroka='';
           //var clothPoints = [];
           for (var i = 0; i < count; i++) {              
               console.log(popa[i].name + " Имя и очкo " + popa[i].clothPoints);
@@ -158,11 +186,27 @@ app.post('/handler', function(req, res, next) {
         { if (popa[j+1].clothPoints < popa[j].clothPoints)
            { var t = popa[j+1]; popa[j+1] = popa[j]; popa[j] = t; }
         }
-     }                 
+     }      var gender;
+              if(req.body.Gender == 1){
+                  gender = "М";
+              }
+              else {
+                  gender = "Ж";
+              }
             for (var c = 0; c < count; c ++){
+                if(c < (count - 6)){
+                    stroka = stroka;
+                }
+                else{
+                if(c == 4 || c == 7){
+                    stroka = '<div class = clothpadding><td><img class = class="imgborder" src='+popa[c].imgsrc+' width="360" height="360"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: "+ popa[c].style +" Пол: "+gender + '</p> <li  class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></li></td></div>'+ '</tr><tr>' + stroka ;
+                }
+                else{
            //console.log(popa[c].name + " Имя и очки " + popa[c].clothPoints);
-           stroka = '<img src='+popa[c].imgsrc+' width="360" height="360"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: "+ popa[c].style +" Пол: "+popa[c].gender + '</p><p>'+popa[c].src+'</p>' + stroka
+           stroka = '<td><div class = clothpadding><img src='+popa[c].imgsrc+' width="360" height="360" border="2"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: "+ popa[c].style +" Пол: "+gender+ '</p></div> <li text-align="center" class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></li></td>' + stroka;
+                    }
           }
+                }
    res.writeHead(200, {'Content-Type': 'text/html'});
           res.write(
             '<!DOCTYPE html>'
@@ -195,12 +239,14 @@ app.post('/handler', function(req, res, next) {
 +         '</header>'
 +       '<nav>'
 +        '<ul>'
-+ '<li style="float:center"><a href="hand.html">Choose</a></li><li><a href="">News</a></li><li><a href="">Trends</a></li>'
++ '<li><a href="">Новости</a></li><li style="float:center"><a href="hand.html">Подобрать</a></li><li><a href="">Тренды</a></li>'
 +         '</ul>'
 +          '    <hr class="head">'
 +      '</nav>'
 +  '<form method="POST" align="center">  '
 +  ' <table align="center" cellpadding="0">'
+              
+              +'<tr>'
     +stroka
               +'</table>'
               +'</form> '
