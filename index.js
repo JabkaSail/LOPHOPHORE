@@ -6,8 +6,8 @@ var app = express();
 var con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'ApoD_rasStRELny',
-//password : 'password',
+ // password : 'ApoD_rasStRELny',
+    password : 'password',
   database : 'Lophophore'
  });
 
@@ -27,8 +27,7 @@ app.use(express.static(__dirname + "/views"));
 */
     
 app.get('/', function(req, res) {
-//res.redirect('/hand');
-     res.sendfile('views/index.html');
+res.redirect('/hand');
 });      
 
 
