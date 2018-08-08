@@ -434,11 +434,12 @@ transition: all 600ms;
      background-color: #001f43;
     font-family: 'Ubuntu Condensed', sans-serif;
 	font-size:20px;
-	
+	display: inline-block;
+    position: relative;
 	text-decoration:none;
     margin-bottom: 100%;
-    margin-left: 150%;
-    margin-right: 150%;
+    margin:0 auto;
+    
 }
 .Buy:hover {
 color: #ffffff;

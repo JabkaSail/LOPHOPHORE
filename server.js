@@ -6,8 +6,8 @@ var app = express();
 var con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'ApoD_rasStRELny',
-//password : 'password',
+  //password : 'ApoD_rasStRELny',
+password : 'password',
   database : 'Lophophore'
  });
 
@@ -37,7 +37,7 @@ app.get('/add', function(req, res) {
 });
 
 app.get('/hand', function(req, res) {
-  res.sendfile('views/hand.html');
+  res.sendfile('views/index.html');
 });
 
 
@@ -116,7 +116,7 @@ app.post('/handler', function(req, res, next) {
 +'<html>'
  +'<head>'
   +'<meta charset="utf-8">'
-  +'<title> Sorry, Lophophore</title>'
+  +'<title>Sorry, laphophora</title>'
    +'<link rel = "stylesheet" href="styles.css"/>'
 +'<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">'
  +    '<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">'
@@ -138,11 +138,11 @@ app.post('/handler', function(req, res, next) {
  +'</head>'
  +'<body>'
 +   '<header>'
-+  '<h1 font-size="20px">Lophophore</h1>'
++  `<h1 font-size="20px">la'phophora</h1>`
 +         '</header>'
 +       '<nav>'
 +        '<ul>'
-+ '<li><a href="">Новости</a></li><li style="float:center"><a href="hand.html">Подобрать</a></li><li><a href="">Тренды</a></li>'
++ '<li><a href="laphophora.jabkadev.com">Новости</a></li><li style="float:center"><a href="hand.html">Подобрать</a></li><li><a href="laphophora.jabkadev.com">Тренды</a></li>'
 +         '</ul>'
 +          '    <hr class="head">'
 +      '</nav>'
@@ -200,11 +200,11 @@ app.post('/handler', function(req, res, next) {
                 }
                 else{
                 if(c == 4 || c == 7){
-                    stroka = '<div class = clothpadding><td><img class = class="imgborder" src='+popa[c].imgsrc+' width="360" height="360"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: "+ popa[c].style +" Пол: "+gender + '</p> <li  class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></li></td></div>'+ '</tr><tr>' + stroka ;
+                    stroka = '<td><div class = clothpadding><img class = class="imgborder" src='+popa[c].imgsrc+' width="300" height="300"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: "+ popa[c].style +" Пол: "+gender + '</p> <li class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></li></td></div>'+ '</tr><tr>' + stroka ;
                 }
                 else{
            //console.log(popa[c].name + " Имя и очки " + popa[c].clothPoints);
-           stroka = '<td><div class = clothpadding><img src='+popa[c].imgsrc+' width="360" height="360" border="2"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: "+ popa[c].style +" Пол: "+gender+ '</p></div> <li text-align="center" class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></li></td>' + stroka;
+           stroka = '<td><div class = clothpadding><img src='+popa[c].imgsrc+' width="300" height="300" border="2"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: "+ popa[c].style +" Пол: "+gender+ '</p> <li text-align="center" class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></div></li></td>' + stroka;
                     }
           }
                 }
@@ -214,7 +214,7 @@ app.post('/handler', function(req, res, next) {
 +'<html>'
  +'<head>'
   +'<meta charset="utf-8">'
-  +'<title>Choose from Lophophore</title>'
+  +'<title>laphophora</title>'
    +'<link rel = "stylesheet" href="styles.css"/>'
 +'<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">'
  +    '<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">'
@@ -236,7 +236,7 @@ app.post('/handler', function(req, res, next) {
  +'</head>'
  +'<body>'
 +   '<header>'
-+  '<h1 font-size="20px">Lophophore</h1>'
++  `<h1 font-size="20px">la'phophora</h1>`
 +         '</header>'
 +       '<nav>'
 +        '<ul>'
@@ -269,4 +269,4 @@ app.post('/handler', function(req, res, next) {
 });
 
 console.log('Сервер стартовал!');
-app.listen(80);
+app.listen(8080);
