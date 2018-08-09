@@ -6,8 +6,8 @@ var app = express();
 var con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-//  password : 'ApoD_rasStRELny',
-password : 'password',
+ password : 'ApoD_rasStRELny',
+//password : 'password',
   database : 'Lophophore'
  });
 
@@ -269,4 +269,4 @@ app.post('/handler', function(req, res, next) {
 });
 
 console.log('Сервер стартовал!');
-app.listen(8080);
+app.listen(80);
