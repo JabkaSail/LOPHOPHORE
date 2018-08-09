@@ -58,41 +58,52 @@ app.post('/adder', function(req, res, next)
         src: req.body.src,
         imgsrc: req.body.imgsrc
     }
-
+    var Age = JSON.parse(JSON.stringify(req.body.Age));
+         var Event = JSON.parse(JSON.stringify(req.body.Event));
+         var Gender = JSON.parse(JSON.stringify(req.body.Gender));
+         var Style = JSON.parse(JSON.stringify(req.body.Style));
+           con.query("INSERT INTO ClothesNames SET ?", ClothesNamesMass, function (err, rows, fields) {
+              if (err) throw err;
+            });
+        for (var n = 0; n < 5; n++){
     var TagAgeMass = {
-        age: req.body.Age,
+        age: Age[n],
         cid: count
     }
            
     var TagEventMass = {
-        event: req.body.Event,
+        event: Event[n],
         cid: count
     }
     
     var TagGenderMass = {
-        gender: req.body.Gender,
+        gender: Gender[n],
         cid: count
     }
     var TagStyleMass = {
-        style: req.body.Style,
+        style: Style[n],
         cid: count
     }
-                
-        con.query("INSERT INTO ClothesNames SET ?", ClothesNamesMass, function (err, rows, fields) {
-              if (err) throw err;
+               console.log(Age[n]); 
+     
             con.query("INSERT INTO TagAge SET ?", TagAgeMass, function (err, rows, fields) {
                   if (err) throw err;
+                 });
              con.query("INSERT INTO TagEvent SET ?", TagEventMass, function (err, rows, fields) {
                    if (err) throw err;
+                  });
             con.query("INSERT INTO TagGender SET ?", TagGenderMass, function (err, rows, fields) {
                   if (err) throw err;
+                  });
+              
             con.query("INSERT INTO TagStyle SET ?", TagStyleMass, function (err, rows, fields) {
              if (err) throw err;
         });
-        });
-        });
-        });
-        });
+         
+       
+      
+        
+            }
         });
     //con.query("INSERT INTO ClothesNames TagAge (age), TagEvent (event), TagGender (gender), TagStyle (style) SET ClothesNames.name = ? AND ClothesNames.src = ? AND ClothesNames.imgsrc = ? AND TagAge.age = ? AND TagGender.gender = ? AND TagStyle.style = ? AND TagEvent.event = ?", [req.body.name, req.body.src, req.body.imgsrc, req.body.Age, req.body.Gender, req.body.style, req.body.event] , function (err, rows, fields) {
    // if (err) throw err;

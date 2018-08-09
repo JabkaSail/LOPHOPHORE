@@ -90,11 +90,11 @@
             <tr>
                 <td>
                 <div class ="age">
-                    <p><input name="Age" type="checkbox" value="1"> Меньше 10</p>
-                    <p><input name="Age" type="checkbox" value="2"> Больше 10, но меньше 20</p>
-                    <p><input name="Age" type="checkbox" value="3"> Больше 20, но меньше 30</p>
-                    <p><input name="Age" type="checkbox" value="4"> Больше 30, но меньше 40</p>
-                    <p><input name="Age" type="checkbox" value="6"> Больше 50, но меньше 60</p>
+                    <p><input name="Age1" type="checkbox" value="1"> Меньше 10</p>
+                    <p><input name="Age2" type="checkbox" value="2"> Больше 10, но меньше 20</p>
+                    <p><input name="Age3" type="checkbox" value="3"> Больше 20, но меньше 30</p>
+                    <p><input name="Age4" type="checkbox" value="4"> Больше 30, но меньше 40</p>
+                    <p><input name="Age5" type="checkbox" value="6"> Больше 50, но меньше 60</p>
                 </div>
                 </td>    
             </tr> 
@@ -106,8 +106,8 @@
                <tr>
             <td>
                 <div class ="gender">
-            <p><input name="Gender" type="checkbox" value="1"> Мужчина</p>
-            <p><input name="Gender" type="checkbox" value="2"> Женщина</p>
+            <p><input name="Gender1" type="checkbox" value="1"> Мужчина</p>
+            <p><input name="Gender2" type="checkbox" value="2"> Женщина</p>
                 </div>
             </td>
                 </tr>
@@ -119,11 +119,11 @@
                 <tr>
                     <td>
                 <div class ="event">
-                <p><input name="Event" type="checkbox" value="Birthday"> На день рождения</p>
-                <p><input name="Event" type="checkbox" value="Wedding"> На свадьбу (гость)</p>
-                <p><input name="Event" type="checkbox" value="BusinessMeeting"> Для деловой встречи</p>
-                <p><input name="Event" type="checkbox" value="Work"> Для работы на каждый день</p>
-                <p><input name="Event" type="checkbox" value="Weekend"> Для выходного дня</p>
+                <p><input name="Event1" type="checkbox" value="Birthday"> На день рождения</p>
+                <p><input name="Event2" type="checkbox" value="Wedding"> На свадьбу (гость)</p>
+                <p><input name="Event3" type="checkbox" value="BusinessMeeting"> Для деловой встречи</p>
+                <p><input name="Event4" type="checkbox" value="Work"> Для работы на каждый день</p>
+                <p><input name="Event5" type="checkbox" value="Weekend"> Для выходного дня</p>
                 </div>
                     </td>
                 </tr>
@@ -135,9 +135,9 @@
         <tr>   
             <td>
                 <div class ="style">
-                    <p><input name="Style" type="checkbox" value="Strong"> Строгий</p>
-                    <p><input name="Style" type="checkbox" value="Soft"> Свободный</p>
-                    <p><input name="Style" type="checkbox" value="Bright"> Яркий</p>
+                    <p><input name="Style1" type="checkbox" value="Strong"> Строгий</p>
+                    <p><input name="Style2" type="checkbox" value="Soft"> Свободный</p>
+                    <p><input name="Style3" type="checkbox" value="Bright"> Яркий</p>
                 </div>        
             </td>      
         </tr>
@@ -151,7 +151,53 @@
       var Seks;
       var Event;
       var Style;
-
+      if($("#Age1").prop("checked")){
+          Age = 1;
+          alert("JOPA");
+      }
+  else if(Age2.checked){
+          Age = 2;
+      }
+        else if(Age3.checked){
+          Age = 3;
+      }
+        else if(Age4.checked){
+          Age = 4;
+      }
+        else if(Age5.checked){
+          Age = 5;
+      }
+      if (Gender1.checked){
+          Seks = 1;
+      }
+     else  if (Gender2.checked){
+          Seks = 2;
+      }
+      if (Event1.checked){
+          Event = 1;
+      }
+       else  if (Event2.checked){
+          Event = 2;
+      }
+     else  if (Event3.checked){
+          Event = 3;
+      }
+       else  if (Event4.checked){
+          Event = 4;
+      }
+       else  if (Event5.checked){
+          Event = 5;
+      }
+      if (Style1.checked){
+          Style = 1;
+      }
+       else  if (Style2.checked){
+          Style = 2;
+      }
+     else  if (Style3.checked){
+          Style = 3;
+      }
+      /*
         var rad=document.getElementsByName('Age');
     for (var i=0;i<rad.length; i++) {
         if (rad[i].checked) {
@@ -178,7 +224,9 @@
             Style = rad[i].value;
         }
     }
+     */
   };
+ 
 </script>
          </form> 
 
