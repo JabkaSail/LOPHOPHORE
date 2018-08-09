@@ -6,8 +6,8 @@ var app = express();
 var con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'ApoD_rasStRELny',
-//password : 'password',
+//  password : 'ApoD_rasStRELny',
+password : 'password',
   database : 'Lophophore'
  });
 
@@ -104,11 +104,11 @@ app.post('/adder', function(req, res, next)
 app.post('/handler', function(req, res, next) {
  
   if (err) throw err;
-    console.log("DWTD");
+   // console.log("DWTD");
     con.query("SELECT COUNT(*) AS count FROM ClothesNames, TagAge, TagGender WHERE ClothesNames.id = TagAge.cid AND ClothesNames.id = TagGender.cid AND age = ? AND gender = ?", [req.body.Age, req.body.Gender], function (err, rows, fields) {
     if (err) throw err;
     count = rows[0].count;
-        console.log(count);
+      //  console.log(count);
             if (count == 0) {
        res.writeHead(200, {'Content-Type': 'text/html'});
           res.write(
@@ -142,7 +142,7 @@ app.post('/handler', function(req, res, next) {
 +         '</header>'
 +       '<nav>'
 +        '<ul>'
-+ '<li><a href="laphophora.jabkadev.com">Новости</a></li><li style="float:center"><a href="hand.html">Подобрать</a></li><li><a href="laphophora.jabkadev.com">Тренды</a></li>'
++ '<li><a href="http://laphophora.jabkadev.com/category/news/">Новости</a></li><li style="float:center"><a href="index.html">Подобрать</a></li><li><a href="http://laphophora.jabkadev.com/category/trends/">Тренды</a></li>'
 +         '</ul>'
 +          '    <hr class="head">'
 +      '</nav>'
@@ -162,7 +162,7 @@ app.post('/handler', function(req, res, next) {
      
     //  console.log(result);
       var popa = JSON.parse(JSON.stringify(result));
-       console.log(popa);
+      // console.log(popa);
  //if (popa.clothPoints == null){
    //       console.log("Hello^_^");
      // }
@@ -170,7 +170,7 @@ app.post('/handler', function(req, res, next) {
           var stroka='';
           //var clothPoints = [];
           for (var i = 0; i < count; i++) {              
-              console.log(popa[i].name + " Имя и очкo " + popa[i].clothPoints);
+          //    console.log(popa[i].name + " Имя и очкo " + popa[i].clothPoints);
           if (popa[i].event == req.body.Event){
               popa[i].clothPoints += 5;
           }
@@ -180,7 +180,7 @@ app.post('/handler', function(req, res, next) {
           }
         
     //}
-          console.log(popa)
+        //  console.log(popa)
          // console.log(popa.clothPoints);
     for (var i = 0; i < count-1; i++)
      { for (var j = 0; j < count-1-i; j++)
@@ -240,7 +240,7 @@ app.post('/handler', function(req, res, next) {
 +         '</header>'
 +       '<nav>'
 +        '<ul>'
-+ '<li><a href="">Новости</a></li><li style="float:center"><a href="hand.html">Подобрать</a></li><li><a href="">Тренды</a></li>'
++ '<li><a href="http://laphophora.jabkadev.com/category/news/">Новости</a></li><li style="float:center"><a href="index.html">Подобрать</a></li><li><a href="http://laphophora.jabkadev.com/category/trends/">Тренды</a></li>'
 +         '</ul>'
 +          '    <hr class="head">'
 +      '</nav>'
@@ -269,4 +269,4 @@ app.post('/handler', function(req, res, next) {
 });
 
 console.log('Сервер стартовал!');
-app.listen(80);
+app.listen(8080);
