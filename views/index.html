@@ -28,12 +28,12 @@
  </head>
  <body>
    <header>
-    <h1 font-size="20px">La'phophora</h1>
+    <h1 font-size="20px">la'phophora</h1>
            </header>
         <nav>
          <ul>
              
-  <li><a href="http://laphophora.jabkadev.com/category/news/">Новости</a></li><li style="float:center"><a href="index.html">Подобрать</a></li><li><a href="http://laphophora.jabkadev.com/category/trends/">Тренды</a></li>
+  <li><a href="laphophora.jabkadev.com">Новости</a></li><li style="float:center"><a href="hand.html">Подобрать</a></li><li><a href="laphophora.jabkadev.com">Тренды</a></li>
   
  
          </ul>
@@ -50,12 +50,13 @@
             <tr>
                 <td>
                 <div class ="age">
-                    <p><input name="Age" type="radio" value="1"> От 0 до 6 лет</p>
+                     <p><input name="Age" type="radio" value="1"> От 0 до 6 лет</p>
                     <p><input name="Age" type="radio" value="2"> От 7 до 15 лет</p>
                     <p><input name="Age" type="radio" value="3"> От 15 до 20 лет</p>
                     <p><input name="Age" type="radio" value="4"> От 20 до 30 лет
                     <p><input name="Age" type="radio" value="5">  От 30 до 45 лет</p>
                      <p><input name="Age" type="radio" value="6"> 45+ лет</p>
+                    <p><input name="Size" type="checkbox" value="1"> Size+</p>
                 </div>
                 </td>    
             </tr> 
@@ -79,14 +80,14 @@
                 </tr>
                 <tr>
                     <td>
-                 <div class ="event">
-                <p><input name="Event" type="radio" value="Birthday"> На выход</p>
-                <p><input name="Event" type="radio" value="Wedding"> На свадьбу (гость)</p>
-                <p><input name="Event" type="radio" value="BusinessMeeting"> Для деловой встречи</p>
-                <p><input name="Event" type="radio" value="Work"> Для работы (строгий стиль)</p>
-                <p><input name="Event" type="radio" value="Weekend"> Для выходного дня</p>
-                <p><input name="Event" type="radio" value="EveryDay"> На каждый день</p>
-                <p><input name="Event" type="radio" value="BeachDay"> Пляжный отдых</p>
+                <div class ="event">
+                <p><input name="Event" type="radio" value="1"> На выход</p>
+                <p><input name="Event" type="radio" value="2"> На свадьбу (гость)</p>
+                <p><input name="Event" type="radio" value="3"> Для деловой встречи</p>
+                <p><input name="Event" type="radio" value="4"> Для работы (строгий стиль)</p>
+                <p><input name="Event" type="radio" value="5"> Для выходного дня</p>
+                <p><input name="Event" type="radio" value="6"> На каждый день</p>
+                <p><input name="Event" type="radio" value="7"> Пляжный отдых</p>
                 </div>
                     </td>
                 </tr>
@@ -97,13 +98,13 @@
                 </tr>
         <tr>   
             <td>
-               <div class ="style">
-                    <p><input name="Style" type="radio" value="Strong"> Строгий</p>
-                    <p><input name="Style" type="radio" value="Soft"> Свободный</p>
-                    <p><input name="Style" type="radio" value="Bright"> Яркий</p>
-                    <p><input name="Style" type="radio" value="TopTrands"> Top Trands</p>
-                    <p><input name="Style" type="radio" value="DesignClothes"> Дизайнерская одежда</p>
-                </div>      
+                <div class ="style">
+                   <p><input name="Style" type="radio" value="1"> Строгий</p>
+                    <p><input name="Style" type="radio" value="2"> Свободный</p>
+                    <p><input name="Style" type="radio" value="3"> Яркий</p>
+                    <p><input name="Style" type="radio" value="4"> Top Trands</p>
+                    <p><input name="Style" type="radio" value="5"> Дизайнерская одежда</p>
+                </div>        
             </td>      
         </tr>
     </table>
@@ -116,11 +117,19 @@
       var Seks;
       var Event;
       var Style;
-      
+      var Size;
+
         var rad=document.getElementsByName('Age');
     for (var i=0;i<rad.length; i++) {
         if (rad[i].checked) {
             Age = rad[i].value;
+        }
+    }
+      
+       var rad=document.getElementsByName('Size');
+    for (var i=0;i<rad.length; i++) {
+        if (rad[i].checked) {
+            Size = rad[i].value;
         }
     }
       

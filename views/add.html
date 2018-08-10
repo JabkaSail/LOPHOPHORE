@@ -96,6 +96,7 @@
                     <p><input name="Age" type="checkbox" value="4"> От 20 до 30 лет
                     <p><input name="Age" type="checkbox" value="5">  От 30 до 45 лет</p>
                      <p><input name="Age" type="checkbox" value="6"> 45+ лет</p>
+                    <p><input name="Size" type="checkbox" value="1"> Size+</p>
                 </div>
                 </td>    
             </tr> 
@@ -120,13 +121,13 @@
                 <tr>
                     <td>
                 <div class ="event">
-                <p><input name="Event" type="checkbox" value="Birthday"> На выход</p>
-                <p><input name="Event" type="checkbox" value="Wedding"> На свадьбу (гость)</p>
-                <p><input name="Event" type="checkbox" value="BusinessMeeting"> Для деловой встречи</p>
-                <p><input name="Event" type="checkbox" value="Work"> Для работы (строгий стиль)</p>
-                <p><input name="Event" type="checkbox" value="Weekend"> Для выходного дня</p>
-                <p><input name="Event" type="checkbox" value="EveryDay"> На каждый день</p>
-                <p><input name="Event" type="checkbox" value="BeachDay"> Пляжный отдых</p>
+                <p><input name="Event" type="checkbox" value="1"> На выход</p>
+                <p><input name="Event" type="checkbox" value="2"> На свадьбу (гость)</p>
+                <p><input name="Event" type="checkbox" value="3"> Для деловой встречи</p>
+                <p><input name="Event" type="checkbox" value="4"> Для работы (строгий стиль)</p>
+                <p><input name="Event" type="checkbox" value="5"> Для выходного дня</p>
+                <p><input name="Event" type="checkbox" value="6"> На каждый день</p>
+                <p><input name="Event" type="checkbox" value="7"> Пляжный отдых</p>
                 </div>
                     </td>
                 </tr>
@@ -138,11 +139,11 @@
         <tr>   
             <td>
                 <div class ="style">
-                    <p><input name="Style" type="checkbox" value="Strong"> Строгий</p>
-                    <p><input name="Style" type="checkbox" value="Soft"> Свободный</p>
-                    <p><input name="Style" type="checkbox" value="Bright"> Яркий</p>
-                    <p><input name="Style" type="checkbox" value="TopTrands"> Top Trands</p>
-                    <p><input name="Style" type="checkbox" value="DesignClothes"> Дизайнерская одежда</p>
+                    <p><input name="Style" type="checkbox" value="1"> Строгий</p>
+                    <p><input name="Style" type="checkbox" value="2"> Свободный</p>
+                    <p><input name="Style" type="checkbox" value="3"> Яркий</p>
+                    <p><input name="Style" type="checkbox" value="4"> Top Trands</p>
+                    <p><input name="Style" type="checkbox" value="5"> Дизайнерская одежда</p>
                 </div>        
             </td>      
         </tr>
@@ -156,11 +157,19 @@
       var Seks;
       var Event;
       var Style;
+      var Size;
 
         var rad=document.getElementsByName('Age');
     for (var i=0;i<rad.length; i++) {
         if (rad[i].checked) {
             Age = rad[i].value;
+        }
+    }
+      
+       var rad=document.getElementsByName('Size');
+    for (var i=0;i<rad.length; i++) {
+        if (rad[i].checked) {
+            Size = rad[i].value;
         }
     }
       

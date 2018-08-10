@@ -168,7 +168,7 @@ app.post('/handler', function(req, res, next) {
         res.end();  
     }
    // console.log(count + " Кол-во");
-  con.query("SELECT name, clothPoints, src, imgsrc, age, style, event, gender FROM ClothesNames, TagAge, TagEvent, TagGender, TagStyle WHERE ClothesNames.id = TagAge.cid AND ClothesNames.id = TagEvent.cid AND ClothesNames.id = TagGender.cid AND ClothesNames.id = TagStyle.cid AND age = ? AND gender = ? ", [req.body.Age, req.body.Gender], function (err, result, fields) {
+  con.query("SELECT name, clothPoints, src, imgsrc, age, style, event, gender FROM ClothesNames, TagAge, TagEvent, TagGender, TagStyle WHERE ClothesNames.id = TagAge.cid AND ClothesNames.id = TagEvent.cid AND ClothesNames.id = TagGender.cid AND ClothesNames.id = TagStyle.cid AND age = ?  AND gender = ? ", [req.body.Age, req.body.Gender], function (err, result, fields) {
     if (err) throw err;
      
     //  console.log(result);
