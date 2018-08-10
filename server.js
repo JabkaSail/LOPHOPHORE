@@ -65,7 +65,7 @@ app.post('/adder', function(req, res, next)
            con.query("INSERT INTO ClothesNames SET ?", ClothesNamesMass, function (err, rows, fields) {
               if (err) throw err;
             });
-        for (var n = 0; n < 5; n++){
+        for (var n = 0; n < 7; n++){
     var TagAgeMass = {
         age: Age[n],
         cid: count
@@ -149,7 +149,7 @@ app.post('/handler', function(req, res, next) {
  +'</head>'
  +'<body>'
 +   '<header>'
-+  `<h1 font-size="20px">la'phophora</h1>`
++  `<h1 font-size="20px">La'phophora</h1>`
 +         '</header>'
 +       '<nav>'
 +        '<ul>'
@@ -247,7 +247,7 @@ app.post('/handler', function(req, res, next) {
  +'</head>'
  +'<body>'
 +   '<header>'
-+  `<h1 font-size="20px">la'phophora</h1>`
++  `<h1 font-size="20px">La'phophora</h1>`
 +         '</header>'
 +       '<nav>'
 +        '<ul>'

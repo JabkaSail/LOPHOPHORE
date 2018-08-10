@@ -280,4 +280,4 @@ app.post('/handler', function(req, res, next) {
 });
 
 console.log('Сервер стартовал!');
-app.listen(8080);
+app.listen(80);
