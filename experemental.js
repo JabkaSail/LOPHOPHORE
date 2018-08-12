@@ -224,7 +224,7 @@ app.post('/handler', function(req, res, next) {
                 }
                 else{
            //console.log(popa[c].name + " Имя и очки " + popa[c].clothPoints);
-           stroka = '<td><div class = clothpadding><img src='+popa[c].imgsrc+' width="300" height="300" border="2"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: "+ popa[c].style +" Пол: "+gender+ '</p> <li text-align="center" class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></div></li></td>' + stroka;
+           stroka = '<td><div class = clothpadding><img src='+popa[c].imgsrc+' width="300" height="300" border="2"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: " + popa[c].style +" Пол: "+gender+ '</p> <li text-align="center" class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></div></li></td>' + stroka;
                     }
           }
                 }

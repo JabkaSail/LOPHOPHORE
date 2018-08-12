@@ -6,7 +6,7 @@ var app = express();
 var con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
- password : 'ApoD_rasStRELny',
+  password : 'ApoD_rasStRELny',
 //password : 'password',
   database : 'Lophophore'
  });
@@ -58,6 +58,11 @@ app.post('/adder', function(req, res, next)
         src: req.body.src,
         imgsrc: req.body.imgsrc
     }
+    var TagSizeMass = {
+        size: req.body.Size,
+        cid: count
+    }
+    console.log(req.body.Size);
     var Age = JSON.parse(JSON.stringify(req.body.Age));
          var Event = JSON.parse(JSON.stringify(req.body.Event));
          var Gender = JSON.parse(JSON.stringify(req.body.Gender));
@@ -65,7 +70,10 @@ app.post('/adder', function(req, res, next)
            con.query("INSERT INTO ClothesNames SET ?", ClothesNamesMass, function (err, rows, fields) {
               if (err) throw err;
             });
-        for (var n = 0; n < 7; n++){
+         con.query("INSERT INTO TagSize SET ?", TagSizeMass, function (err, rows, fields) {
+                  if (err) throw err;
+                 });
+        for (var n = 0; n < 8; n++){
     var TagAgeMass = {
         age: Age[n],
         cid: count
@@ -84,7 +92,7 @@ app.post('/adder', function(req, res, next)
         style: Style[n],
         cid: count
     }
-               console.log(Age[n]); 
+               console.log(Event); 
      
             con.query("INSERT INTO TagAge SET ?", TagAgeMass, function (err, rows, fields) {
                   if (err) throw err;
@@ -116,7 +124,7 @@ app.post('/handler', function(req, res, next) {
  
   if (err) throw err;
    // console.log("DWTD");
-    con.query("SELECT COUNT(*) AS count FROM ClothesNames, TagAge, TagGender WHERE ClothesNames.id = TagAge.cid AND ClothesNames.id = TagGender.cid AND age = ? AND gender = ?", [req.body.Age, req.body.Gender], function (err, rows, fields) {
+    con.query("SELECT COUNT(*) AS count FROM ClothesNames, TagSize, TagAge, TagGender WHERE ClothesNames.id = TagAge.cid AND ClothesNames.id = TagSize.cid AND ClothesNames.id = TagGender.cid AND age = ? AND TagSize.size = ? AND gender = ?", [req.body.Age, req.body.Size, req.body.Gender], function (err, rows, fields) {
     if (err) throw err;
     count = rows[0].count;
       //  console.log(count);
@@ -168,7 +176,8 @@ app.post('/handler', function(req, res, next) {
         res.end();  
     }
    // console.log(count + " Кол-во");
-  con.query("SELECT name, clothPoints, src, imgsrc, age, style, event, gender FROM ClothesNames, TagAge, TagEvent, TagGender, TagStyle WHERE ClothesNames.id = TagAge.cid AND ClothesNames.id = TagEvent.cid AND ClothesNames.id = TagGender.cid AND ClothesNames.id = TagStyle.cid AND age = ?  AND gender = ? ", [req.body.Age, req.body.Gender], function (err, result, fields) {
+  con.query("SELECT name, clothPoints, src, imgsrc, age, style, event, gender FROM ClothesNames, TagAge, TagEvent, TagGender, TagSize, TagStyle WHERE ClothesNames.id = TagAge.cid AND ClothesNames.id = TagEvent.cid AND ClothesNames.id = TagGender.cid AND ClothesNames.id = TagSize.cid AND ClothesNames.id = TagStyle.cid AND age = ? AND TagSize.size = ? AND gender = ? ", [req.body.Age, req.body.Size, req.body.Gender], function (err, result, fields) {
+      console.log(req.body.Size);
     if (err) throw err;
      
     //  console.log(result);
@@ -215,7 +224,7 @@ app.post('/handler', function(req, res, next) {
                 }
                 else{
            //console.log(popa[c].name + " Имя и очки " + popa[c].clothPoints);
-           stroka = '<td><div class = clothpadding><img src='+popa[c].imgsrc+' width="300" height="300" border="2"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: "+ popa[c].style +" Пол: "+gender+ '</p> <li text-align="center" class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></div></li></td>' + stroka;
+           stroka = '<td><div class = clothpadding><img src='+popa[c].imgsrc+' width="300" height="300" border="2"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: " + popa[c].style +" Пол: "+gender+ '</p> <li text-align="center" class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></div></li></td>' + stroka;
                     }
           }
                 }
@@ -262,9 +271,12 @@ app.post('/handler', function(req, res, next) {
     +stroka
               +'</table>'
               +'</form> '
+              +'<form action="http://laphophora.jabkadev.com/quiz/laphophora/">'
+    +'<input class="EntBtn" type="submit" value="Пройти анкету" />'
++'</form>'
                +'<div id="scroller">'
       +'<div class="coontainer">'
-          +'<button class ="FootButn">Choose </button>'
+          +'<button href="http://laphophora.jabkadev.com/quiz/laphophora/" class ="FootButn">Choose </button>'
       +'   </div>'
      +'</div>'
        +'  <hr id="scroller">'
