@@ -7,7 +7,7 @@ var con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'ApoD_rasStRELny',
-//password : 'password',
+ //password : 'password',
   database : 'Lophophore'
  });
 
@@ -52,90 +52,80 @@ app.post('/adder', function(req, res, next)
     con.query("SELECT COUNT(*) AS count FROM ClothesNames", function (err, rows, fields) {
     if (err) throw err;
     count = rows[0].count;
-        count = count + 1;
+     //   count = count + 1;
     var ClothesNamesMass = {
         name: req.body.name,
         src: req.body.src,
         imgsrc: req.body.imgsrc
     }
+   
     var size = req.body.Size;
-        if(size != 1){
-            size = 0;
-        }
-    var TagSizeMass = {
-        size: size,
-        cid: count
-    }
-    console.log(size);
     var Age = JSON.parse(JSON.stringify(req.body.Age));
          var Event = JSON.parse(JSON.stringify(req.body.Event));
          var Gender = JSON.parse(JSON.stringify(req.body.Gender));
          var Style = JSON.parse(JSON.stringify(req.body.Style));
+        
+        for (var d = 0; d<7; d++){
+            count += 1;
+
+            if (size != 1){
+                size = 0;
+            }
+       var TagSizeMass = {
+        size: size,
+        cid: count
+    }
+         
            con.query("INSERT INTO ClothesNames SET ?", ClothesNamesMass, function (err, rows, fields) {
               if (err) throw err;
             });
+       
          con.query("INSERT INTO TagSize SET ?", TagSizeMass, function (err, rows, fields) {
                   if (err) throw err;
                  });
-        for (var n = 0; n < 6; n++){
-            if (Age[n] == null){
-              console.log("")
-            }
-            else{
+      
+           
     var TagAgeMass = {
-        age: Age[n],
+        age: Age[d],
         cid: count
     }
                 con.query("INSERT INTO TagAge SET ?", TagAgeMass, function (err, rows, fields) {
                   if (err) throw err;
                  });
-      }
-            }
-             for (var n = 0; n < 6; n++){
-            if (Event[n] == null){
-              console.log("")
-            }
-            else{
+      
+           
     var TagEventMass = {
-        event: Event[n],
+        event: Event[d],
         cid: count
     }
      con.query("INSERT INTO TagEvent SET ?", TagEventMass, function (err, rows, fields) {
                    if (err) throw err;
                   });
-      }
+      
                  
-                 }
-        for (var n = 0; n < 2; n++){
-            if (Gender[n] == null){
-              console.log("")
-            }
-            else{
+        
+        
     var TagGenderMass = {
-        gender: Gender[n],
+        gender: Gender[d],
         cid: count
     }
     
             con.query("INSERT INTO TagGender SET ?", TagGenderMass, function (err, rows, fields) {
                   if (err) throw err;
                   });
-             }  
-      }
-        for (var n = 0; n < 5; n++){
-             if (Style[n] == null){
-              console.log("")
-            }
-            else{
+              
+    
+         
     var TagStyleMass = {
-        style: Style[n],
+        style: Style[d],
         cid: count
     }
       con.query("INSERT INTO TagStyle SET ?", TagStyleMass, function (err, rows, fields) {
              if (err) throw err;
         });
-      }
+      
             }
-             
+              
         });
     //con.query("INSERT INTO ClothesNames TagAge (age), TagEvent (event), TagGender (gender), TagStyle (style) SET ClothesNames.name = ? AND ClothesNames.src = ? AND ClothesNames.imgsrc = ? AND TagAge.age = ? AND TagGender.gender = ? AND TagStyle.style = ? AND TagEvent.event = ?", [req.body.name, req.body.src, req.body.imgsrc, req.body.Age, req.body.Gender, req.body.style, req.body.event] , function (err, rows, fields) {
    // if (err) throw err;
@@ -151,9 +141,12 @@ app.post('/handler', function(req, res, next) {
         size = 0;
     } 
     console.log(size);
+   // con.query("SELECT id FROM ClothesNames, TagSize, TagAge, TagGender WHERE ClothesNames.id = TagAge.cid AND ClothesNames.id = TagSize.cid AND ClothesNames.id = TagGender.cid AND age = ? AND TagSize.size = ? AND gender = ?", [req.body.Age, size, req.body.Gender], function (err, rows, fields) {
     con.query("SELECT COUNT(*) AS count FROM ClothesNames, TagSize, TagAge, TagGender WHERE ClothesNames.id = TagAge.cid AND ClothesNames.id = TagSize.cid AND ClothesNames.id = TagGender.cid AND age = ? AND TagSize.size = ? AND gender = ?", [req.body.Age, size, req.body.Gender], function (err, rows, fields) {
     if (err) throw err;
+      //  console.log(rows);
     count = rows[0].count;
+       
       //  console.log(count);
             if (count == 0) {
        res.writeHead(200, {'Content-Type': 'text/html'});
@@ -181,8 +174,10 @@ app.post('/handler', function(req, res, next) {
 +    '});'
 +'});</script>'
  +   ' <script src="http://code.jquery.com/jquery-latest.js"></script>'
++'<body style="overflow-x:hidden;">'
  +'</head>'
  +'<body>'
+              
 +   '<header>'
 +  `<h1 font-size="20px">La'phophora</h1>`
 +         '</header>'
@@ -202,19 +197,28 @@ app.post('/handler', function(req, res, next) {
    //     res.end(JSON.stringify(fields));
         res.end();  
     }
-     });       
-    con.query("SELECT COUNT(*) AS count FROM ClothesNames WHERE ClothesNames.id = TagAge.cid AND ClothesNames.id = TagEvent.cid AND ClothesNames.id = TagGender.cid AND ClothesNames.id = TagSize.cid AND ClothesNames.id = TagStyle.cid AND age = ? AND TagSize.size = ? AND gender = ? ", [req.body.Age, size, req.body.Gender], function (err, result, fields) {
+            
+  //  con.query("SELECT COUNT(*) AS count FROM ClothesNames, TagSize WHERE id = ? AND age = ? AND TagSize.size = ? AND gender = ? ", [req.body.Age, size, req.body.Gender], function (err, rows, fields) {
+    //     if (err) throw err;
+        //ccount = rows[0].count;
        // console.log(count);
-   
-        
+ //   console.log(rows);       
     console.log(count + " Кол-во");
   con.query("SELECT name, clothPoints, src, imgsrc, age, style, event, gender FROM ClothesNames, TagAge, TagEvent, TagGender, TagSize, TagStyle WHERE ClothesNames.id = TagAge.cid AND ClothesNames.id = TagEvent.cid AND ClothesNames.id = TagGender.cid AND ClothesNames.id = TagSize.cid AND ClothesNames.id = TagStyle.cid AND age = ? AND TagSize.size = ? AND gender = ? ", [req.body.Age, size, req.body.Gender], function (err, result, fields) {
-      console.log(size);
+    //  console.log(size);
     if (err) throw err;
-     
-    console.log(result);
       var popa = JSON.parse(JSON.stringify(result));
-      // console.log(popa);
+      var TrueCount = 0;
+     // for (var i = 0; i < count; i++){
+   //       con.query("SELECT COUNT(*) AS count FROM ClothesNames WHERE name = ?", [popa[i].name], function (err, rows, fields) {
+    ////if (err) throw err;
+       //       TrueCount +=1;
+      //});
+    //  }
+    
+//    console.log(TrueCount + "Jwww");
+     
+       console.log(popa);
  //if (popa.clothPoints == null){
    //       console.log("Hello^_^");
      // }
@@ -222,7 +226,7 @@ app.post('/handler', function(req, res, next) {
           var stroka='';
           //var clothPoints = [];
           for (var i = 0; i < count; i++) {              
-          //    console.log(popa[i].name + " Имя и очкo " + popa[i].clothPoints);
+             
           if (popa[i].event == req.body.Event){
               popa[i].clothPoints += 5;
           }
@@ -230,8 +234,10 @@ app.post('/handler', function(req, res, next) {
            if (popa[i].style == req.body.Style){
                popa[i].clothPoints += 1;
           }
-        
+                  console.log("1 Очки: " +popa[i].clothPoints);
+         }
     //}
+          
         //  console.log(popa)
          // console.log(popa.clothPoints);
     for (var i = 0; i < count-1; i++)
@@ -252,11 +258,11 @@ app.post('/handler', function(req, res, next) {
                 }
                 else{
                 if(c == 4 || c == 7){
-                    stroka = '<td><div class = clothpadding><img class = class="imgborder" src='+popa[c].imgsrc+' width="300" height="300"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: "+ popa[c].style +" Пол: "+gender + '</p> <li class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></li></td></div>'+ '</tr><tr>' + stroka ;
+                    stroka = '<td><div class = clothpadding><img class = class="imgborder" src='+popa[c].imgsrc+' width="300" height="300"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: "+ popa[c].style +" Пол: "+gender + "  Очки: " +popa[c].clothPoints + '</p> <li class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></li></td></div>'+ '</tr><tr>' + stroka ;
                 }
                 else{
            //console.log(popa[c].name + " Имя и очки " + popa[c].clothPoints);
-           stroka = '<td><div class = clothpadding><img src='+popa[c].imgsrc+' width="300" height="300" border="2"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: " + popa[c].style +" Пол: "+gender+ '</p> <li text-align="center" class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></div></li></td>' + stroka;
+           stroka = '<td><div class = clothpadding><img src='+popa[c].imgsrc+' width="300" height="300" border="2"> <p>'+popa[c].name+" Событие: "+popa[c].event+" Возраст: "+popa[c].age +"0 Стиль: " + popa[c].style +" Пол: "+gender + "  Очки: " +popa[c].clothPoints + '</p> <li text-align="center" class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></div></li></td>' + stroka;
                     }
           }
                 }
@@ -285,6 +291,7 @@ app.post('/handler', function(req, res, next) {
 +    '});'
 +'});</script>'
  +   ' <script src="http://code.jquery.com/jquery-latest.js"></script>'
+              
  +'</head>'
  +'<body>'
 +   '<header>'
@@ -317,11 +324,11 @@ app.post('/handler', function(req, res, next) {
           )
    //     res.end(JSON.stringify(fields));
         res.end();
-          }
+        
 });  
 });
 });
 });
-
+//});
 console.log('Сервер стартовал!');
 app.listen(80);

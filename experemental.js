@@ -190,7 +190,7 @@ app.post('/handler', function(req, res, next) {
           var stroka='';
           //var clothPoints = [];
           for (var i = 0; i < count; i++) {              
-          //    console.log(popa[i].name + " Имя и очкo " + popa[i].clothPoints);
+              console.log(popa[i].name + " Имя и очкo " + popa[i].clothPoints);
           if (popa[i].event == req.body.Event){
               popa[i].clothPoints += 5;
           }
@@ -198,7 +198,7 @@ app.post('/handler', function(req, res, next) {
            if (popa[i].style == req.body.Style){
                popa[i].clothPoints += 1;
           }
-        
+           console.log("1 Очки: " +popa[i].clothPoints);
     //}
         //  console.log(popa)
          // console.log(popa.clothPoints);
