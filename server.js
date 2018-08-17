@@ -258,11 +258,11 @@ app.post('/handler', function(req, res, next) {
                 }
                 else{
                 if(c == 4 || c == 7){
-                    stroka = '<td><div class = clothpadding><img class = class="imgborder" src='+popa[c].imgsrc+' width="300" height="300"> <p>'+popa[c].name+'</p> <li class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></li></td></div>'+ '</tr><tr>' + stroka ;
+                    stroka = '<td><div class = clothpadding><img class = class="imgborder" src='+popa[c].imgsrc+' width="200" height="300"> <p>'+popa[c].name+'</p> <li class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></li></td></div>'+ '</tr><tr>' + stroka ;
                 }
                 else{
            //console.log(popa[c].name + " Имя и очки " + popa[c].clothPoints);
-           stroka = '<td><div class = clothpadding><img src='+popa[c].imgsrc+' width="300" height="300" border="2"> <p>'+popa[c].name+'</p> <li text-align="center" class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></div></li></td>' + stroka;
+           stroka = '<td><div class = clothpadding><img src='+popa[c].imgsrc+' width="200" height="300" border="2"> <p>'+popa[c].name+'</p> <li text-align="center" class = second><a class ="Buy" href='+popa[c].src+'>Купить</a></div></li></td>' + stroka;
                     }
           }
                 }
